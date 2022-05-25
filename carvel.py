@@ -21,7 +21,7 @@ def add_qty():
     db.insert(qty_text.get())
     my_listbox.delete(0, END)
     my_listbox.insert(END, qty_text.get())
-    populate_list()
+    # populate_list()
 
 
 def select_item(event):
@@ -54,6 +54,8 @@ def update_qty():
     refresh_item()
     populate_list()
     my_listbox.see(index + 1)
+    my_listbox.select_set(index)
+    my_listbox.activate(index)
 
 
 def clear_text():
@@ -81,7 +83,7 @@ my_listbox.grid(row=0, column=0, columnspan=10, rowspan=1, padx=20, pady=20, sti
 
 scrollbar = tk.Scrollbar(root, orient='vertical', command=my_listbox.yview)
 my_listbox['yscrollcommand'] = scrollbar.set
-scrollbar.grid(column=9, row=0, sticky='ns')
+scrollbar.grid(column=10, row=0, sticky='ns')
 my_listbox.bind('<<ListboxSelect>>', select_item)
 
 qty_text = tk.StringVar()
